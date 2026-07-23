@@ -60,4 +60,4 @@ Results were exported to CSV and visualized in Power BI: an interactive dashboar
 
 ## Author
 
-Maxim — student ("Digitalization of Economic Activity" track), preparing for a data analyst internship at Gazprom Neft's IT cluster.
+Mikhailov Maxim  - a third-year student at the St. Petersburg State University of Economics, specializing in "Digitalization of Economic Activity."
