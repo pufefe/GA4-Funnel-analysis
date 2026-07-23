@@ -50,4 +50,4 @@ Breaks down users by acquisition channel: volume (viewers), paying users (payers
 
 ## Author
 
-Maxim — student in "Digitalization of Economic Activities," prepared this project ahead of an analyst internship in the IT cluster at Gazprom Neft.
+Mikhailov Maksim — 3-rd year student of Saint-Petersburg National University of Economics (UNECON) in "Digitalization of Economic Activity"
