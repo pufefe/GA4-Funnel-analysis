@@ -10,16 +10,16 @@ A personal analytics project: analyzing GA4 data (exported to BigQuery) to study
 ## Repository structure
 
 ```
-├── queries/
-│   ├── funnel.sql       # funnel: view_item → add_to_cart → ... → add_payment_info
-│   ├── channels.sql     # channel breakdown: viewers, payers, conversion_pct
-│   └── ...
+├── 1. Events (1st Nov to 31st Jan).sql   # raw event selection for the period
+├── 2. Funnel users (CVR).sql             # users per funnel step
+├── 3. Conversion.sql                     # step-over-step conversion
+├── 4. CVR channel.sql                    # channel breakdown
 └── README.md
 ```
 
-## What `funnel.sql` does
+## What `2. Funnel users (CVR).sql` and `3. Conversion.sql` do
 
-Builds the step-by-step GA4 event funnel and calculates step-over-step conversion (using the `LAG` window function to compare each step with the previous one).
+Build the step-by-step GA4 event funnel (based on the selection from `1. Events (1st Nov to 31st Jan).sql`) and calculate step-over-step conversion (using the `LAG` window function to compare each step with the previous one).
 
 - **view_item** — 61,252 users (start of the funnel)
 - **add_to_cart** — 12,545 (conversion from previous step: 20.5%)
@@ -29,7 +29,7 @@ Builds the step-by-step GA4 event funnel and calculates step-over-step conversio
 
 **Key insight:** the biggest drop-off happens right after the product view step — only 20.5% of viewers go on to add an item to cart. The second weak point is between shipping info and payment (59.2%), where a significant share of near-paying users is lost.
 
-## What `channels.sql` does
+## What `4. CVR channel.sql` does
 
 Breaks down users by acquisition channel: volume (viewers), paying users (payers), and conversion to payment.
 
@@ -45,7 +45,7 @@ Breaks down users by acquisition channel: volume (viewers), paying users (payers
 ## How to run
 
 1. Open the BigQuery console (or use the `bq` CLI).
-2. Run the queries in `queries/` against your own GA4 dataset (replace `project.dataset.events_*` with your table).
+2. Run the queries in order: `1. Events (1st Nov to 31st Jan).sql`, then `2. Funnel users (CVR).sql` → `3. Conversion.sql` → `4. CVR channel.sql`, replacing `project.dataset.events_*` with your own table.
 3. Export results to CSV and visualize as needed (this project's results were also visualized in Power BI — a funnel chart plus a channel performance dashboard).
 
 ## Author
